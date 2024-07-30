@@ -1,5 +1,5 @@
 import 'package:chattle/data/types.dart';
-import 'package:chattle/model/mock_model.dart';
+import 'package:chattle/model/model.dart';
 import 'package:chattle/ui/chat/chat_box/chat_box.dart';
 import 'package:chattle/ui/chat/chat_page_appbar.dart';
 import 'package:chattle/ui/chat/message_pane/message_pane.dart';
@@ -16,7 +16,7 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   final ValueNotifier<List<MessageData>> _messages =
-      ValueNotifier(MockModel.messages);
+      ValueNotifier(Model.messages);
 
   final TextEditingController chatBoxController = TextEditingController();
 

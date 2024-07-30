@@ -1,12 +1,12 @@
 import 'package:chattle/api/reply.dart';
 import 'package:chattle/data/types.dart';
-import 'package:chattle/model/mock_model.dart';
+import 'package:chattle/model/model.dart';
 import 'package:flutter/material.dart';
 
 class MessageUtils {
   static MessageData createMessage(String message, bool isFromUser) {
     return MessageData(
-      id: MockModel.messages.length.toString(),
+      id: Model.messages.length.toString(),
       message: message,
       sender: isFromUser ? Person.user : Person.gpt2,
       receiver: isFromUser ? Person.gpt2 : Person.user,
