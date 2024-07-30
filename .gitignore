@@ -13,3 +13,10 @@ doc/api/
 
 */secret.dart
 frontend/lib/secret.dart
+
+# Server
+server/gpt-2/*
+server/models/*
+server/myenv/*
+server/llama/*
+server/Meta*/*
