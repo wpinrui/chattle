@@ -1,4 +1,5 @@
 import 'package:chattle/data/types.dart';
+import 'package:chattle/ui/chat/message_pane/chat_bubble.dart';
 import 'package:flutter/material.dart';
 
 class MessagePane extends StatefulWidget {
@@ -10,14 +11,13 @@ class MessagePane extends StatefulWidget {
 }
 
 class _MessagePaneState extends State<MessagePane> {
-
   late ScrollController _scrollController;
 
   void scrollToBottom() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_scrollController.hasClients) {
         _scrollController.animateTo(
-          _scrollController.position.maxScrollExtent,
+          _scrollController.position.minScrollExtent, // listview is reversed
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeOut,
         );
@@ -39,12 +39,14 @@ class _MessagePaneState extends State<MessagePane> {
       builder:
           (BuildContext context, List<MessageData> messages, Widget? child) {
         return ListView.builder(
+          reverse: true,
           controller: _scrollController,
-          itemCount: messages.length,
+          itemCount: messages.length + 1,
           itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text(messages[index].message),
-            );
+            if (index == 0) {
+              return const SizedBox(height: 80);
+            }
+            return ChatBubble(message: messages[messages.length - index]);
           },
         );
       },

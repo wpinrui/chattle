@@ -1,5 +1,6 @@
 import 'package:chattle/const.dart';
 import 'package:chattle/ui/chat/chat_profile.dart';
+import 'package:chattle/ui/pretty/frosted.dart';
 import 'package:chattle/ui/spacers/spacers.dart';
 import 'package:flutter/material.dart';
 
@@ -9,28 +10,30 @@ class ChatPageAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-        toolbarHeight: 70,
-        leadingWidth: 70,
-        leading: const Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            HorizontalSpacer(size: 12),
-            ChatProfile(
-              path: Constants.womanProfilePath,
-              radius: 25,
-            ),
-          ],
+    return Frosted(
+      child: AppBar(
+          toolbarHeight: 70,
+          leadingWidth: 70,
+          leading: const Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              HorizontalSpacer(size: 12),
+              ChatProfile(
+                path: Constants.womanProfilePath,
+                radius: 25,
+              ),
+            ],
+          ),
+          title: Text(name),
+          backgroundColor: Colors.blue.shade500.withOpacity(0.5),
+          titleTextStyle: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 28,
+          ),
         ),
-        title: Text(name),
-        backgroundColor: Colors.blue.shade300,
-        titleTextStyle: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 28,
-        ),
-      );
+    );
   }
   
   @override
