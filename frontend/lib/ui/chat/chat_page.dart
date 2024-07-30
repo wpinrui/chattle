@@ -1,14 +1,18 @@
+import 'package:chattle/const.dart';
+import 'package:chattle/ui/chat/chat_page_appbar.dart';
+import 'package:chattle/ui/chat/chat_profile.dart';
+import 'package:chattle/ui/spacers/spacers.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+  final String name;
+
+  const ChatPage({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Chattle'),
-      ),
+      appBar: ChatPageAppbar(name: name),
       body: const Column(
         children: <Widget>[
           Expanded(

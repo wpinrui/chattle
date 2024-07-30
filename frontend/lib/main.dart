@@ -11,13 +11,16 @@ class ChattleMain extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    debugPrintRebuildDirtyWidgets = true;
     return MaterialApp(
       title: 'Chattle',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
-      home: const ChatPage(),
+      home: const ChatPage(
+        name: 'Janet',
+      ),
       initialRoute: '/',
     );
   }
