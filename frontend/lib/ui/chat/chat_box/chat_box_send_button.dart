@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ChatBoxSendButton extends StatelessWidget {
-  final Future<String> Function() _sendAndReceive;
+  final Future<void> Function() _sendAndReceive;
   const ChatBoxSendButton(
-      {super.key, required Future<String> Function() sendAndReceive})
+      {super.key, required Future<void> Function() sendAndReceive})
       : _sendAndReceive = sendAndReceive;
   @override
   Widget build(BuildContext context) {

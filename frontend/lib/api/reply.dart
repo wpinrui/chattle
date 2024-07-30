@@ -1,7 +1,7 @@
 import 'package:chattle/dev/log.dart';
 
 class Reply {
-  static Future<String> reply(String message) async {
+  static Future<String> getReply(String message) async {
     Log.logger.i('Replying to message: $message');
     // send message
     // TODO: Implement actual call
