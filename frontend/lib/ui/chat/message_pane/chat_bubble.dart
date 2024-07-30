@@ -15,7 +15,7 @@ class ChatBubble extends StatelessWidget {
       child: BubbleSpecialOne(
         text: message.message,
         isSender: isUserMessage,
-        color: isUserMessage ? Colors.green.shade100 : Colors.blue.shade100,
+        color: isUserMessage ? Colors.green.shade200 : Colors.blue.shade200,
         textStyle: const TextStyle(
           color: Colors.black,
           fontSize: 18,
