@@ -1,4 +1,4 @@
-package com.example.frontend
+package com.aaa.chattle
 
 import io.flutter.embedding.android.FlutterActivity
 
