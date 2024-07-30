@@ -1,11 +1,11 @@
 class MessageData {
   final String id;
-  String message;
+  final String message;
   final Person sender;
-  final String receiver;
+  final Person receiver;
   final DateTime timestamp;
 
-  MessageData({
+  const MessageData({
     required this.id,
     required this.message,
     required this.sender,
