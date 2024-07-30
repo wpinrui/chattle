@@ -1,3 +1,4 @@
+import 'package:chattle/ui/chat/chat_box/chat_box.dart';
 import 'package:chattle/ui/chat/chat_page_appbar.dart';
 import 'package:flutter/material.dart';
 
@@ -8,15 +9,16 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: ChatPageAppbar(name: name),
-      body: const Column(
-        children: <Widget>[
-          Expanded(
-            child: Placeholder(), // TODO: add message pane
-          ),
-          Placeholder() // TODO: add input pane
-        ],
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: ChatPageAppbar(name: name),
+        body: const Column(
+          children: <Widget>[
+            Expanded(child: Placeholder()),
+            ChatBox(),
+          ],
+        ),
       ),
     );
   }
