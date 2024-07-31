@@ -18,6 +18,7 @@ frontend/lib/secret.dart
 server/gpt-2/*
 server/models/*
 server/myenv/*
+server/winenv/*
 server/llama/*
 server/Meta*/*
 server/auth/secret.py
