@@ -4,6 +4,7 @@ import 'package:chattle/ui/chat/chat_box/chat_box.dart';
 import 'package:chattle/ui/chat/chat_page_appbar.dart';
 import 'package:chattle/ui/chat/message_pane/message_pane.dart';
 import 'package:chattle/ui/chat/message_utils.dart';
+import 'package:chattle/ui/pretty/frosted.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatefulWidget {
@@ -26,20 +27,30 @@ class _ChatPageState extends State<ChatPage> {
         MessageUtils.sendAndReceive(chatBoxController, _messages);
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        backgroundColor: Colors.grey.shade300,
-        extendBodyBehindAppBar: true,
-        appBar: ChatPageAppbar(name: widget.name),
-        body: Stack(
-          alignment: AlignmentDirectional.bottomCenter,
-          children: <Widget>[
-            Expanded(
-              child: MessagePane(messagesNotifier: _messages),
+      child: Frosted(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/bg.jpg'),
+              fit: BoxFit.cover,
             ),
-            ChatBox(
-                controller: chatBoxController,
-                sendAndReceiveNotify: sendAndReceiveNotify),
-          ],
+          ),
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            extendBodyBehindAppBar: true,
+            appBar: ChatPageAppbar(name: widget.name),
+            body: Stack(
+              alignment: AlignmentDirectional.bottomCenter,
+              children: <Widget>[
+                Expanded(
+                  child: MessagePane(messagesNotifier: _messages),
+                ),
+                ChatBox(
+                    controller: chatBoxController,
+                    sendAndReceiveNotify: sendAndReceiveNotify),
+              ],
+            ),
+          ),
         ),
       ),
     );
