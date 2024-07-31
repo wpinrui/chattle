@@ -1,4 +1,4 @@
-import 'package:chattle/api/reply.dart';
+import 'package:chattle/api/api_actions.dart';
 import 'package:chattle/data/types.dart';
 import 'package:chattle/model/model.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class MessageUtils {
     }
     MessageData sentMessage = createMessage(message, true);
     messages.value = [...messages.value, sentMessage];
-    final reply = await Reply.getReply(message);
+    final reply = await ApiActions.getReply(message);
     MessageData receivedMessage = createMessage(reply, false);
     messages.value = [...messages.value, receivedMessage];
   }
