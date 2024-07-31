@@ -20,3 +20,4 @@ server/models/*
 server/myenv/*
 server/llama/*
 server/Meta*/*
+server/auth/secret.py
