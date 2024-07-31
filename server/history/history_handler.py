@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import List, Dict, DefaultDict
+from typing import List, DefaultDict
 
 class HistoryHandler:
     def __init__(self, max_length: int = 10) -> None:
@@ -8,8 +8,8 @@ class HistoryHandler:
 
     def add_to_history(self, user_id: str, user_input: str, response: str) -> None:
         history = self.user_conversation_history[user_id]
-        history.append(f"USER: {user_input}")
-        history.append(f"ASSISTANT: {response}")
+        history.append(f"USER: {user_input}\n")
+        history.append(f"JANET: {response}\n")
         self.user_conversation_history[user_id] = history[-self.max_length:]
 
     def get_history(self, user_id: str) -> List[str]:
