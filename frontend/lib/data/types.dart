@@ -14,4 +14,4 @@ class MessageData {
   });
 }
 
-enum Person { user, gpt2 }
+enum Person { user, bot }

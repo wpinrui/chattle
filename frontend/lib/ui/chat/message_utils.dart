@@ -8,8 +8,8 @@ class MessageUtils {
     return MessageData(
       id: Model.messages.length.toString(),
       message: message,
-      sender: isFromUser ? Person.user : Person.gpt2,
-      receiver: isFromUser ? Person.gpt2 : Person.user,
+      sender: isFromUser ? Person.user : Person.bot,
+      receiver: isFromUser ? Person.bot : Person.user,
       timestamp: DateTime.now(),
     );
   }
