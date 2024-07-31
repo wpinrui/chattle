@@ -21,3 +21,6 @@ server/myenv/*
 server/llama/*
 server/Meta*/*
 server/auth/secret.py
+
+# Cache
+*/__pycache__/*
