@@ -13,13 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache Flutter dependencies
-        uses: actions/cache@v1
+      - name: Cache Flutter SDK
+        uses: actions/cache@v3
         with:
-          path: /opt/hostedtoolcache/flutter
-          key: ${{ runner.OS }}-flutter-install-cache-${{ env.flutter_version }}
+          path: |
+            ~/.pub-cache
+            ~/.flutter
+          key: ${{ runner.os }}-flutter-install-cache-${{ env.flutter_version }}
           restore-keys: |
-            ${{ runner.OS }}-flutter-install-cache-
+            ${{ runner.os }}-flutter-install-cache-
 
       - name: Setup Flutter SDK
         uses: flutter-actions/setup-flutter@v3
@@ -39,5 +41,5 @@ jobs:
           echo "}" >> frontend/lib/secret.dart
 
       - name: Analyze project source
-        run: dart analyze
+        run: flutter analyze
         working-directory: frontend
