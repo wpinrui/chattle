@@ -21,7 +21,7 @@ def generate_response(query: str, history: Optional[List[GptNeoHistory]] = None)
 
     print(f"Generated prompt: {query}")
     
-    response = generator(query, do_sample=True, max_new_tokens=50, repetition_penalty=1.2)
+    response = generator(query, do_sample=True, max_new_tokens=100, repetition_penalty=1.2)
     
     print(f"Generated response: {response}")
     return extract_assistant_reply(response, history)

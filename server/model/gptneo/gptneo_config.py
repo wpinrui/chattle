@@ -4,5 +4,5 @@ from dataclasses import dataclass
 class GptNeoConfig:
     USER_IDENTIFIER: str = "USER"
     ASSISTANT_IDENTIFIER: str = "JANET"
-    PREFIX_STRING: str = "This is a conversation between the user and Janet. The conversation is very friendly. Janet loves to talk about sports and Korean music. Here is the conversation:"
+    PREFIX_STRING: str = "This is a conversation between the user and the AI-asssistant Janet. The user is asking questions and Janet is answering them. Janet tries to help in whatever way possible. Janet is very professional."
 
