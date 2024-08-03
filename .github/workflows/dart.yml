@@ -18,16 +18,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Using the latest stable version of the Dart SDK
-      - uses: dart-lang/setup-dart@v1
+      # Note: This workflow uses the latest stable version of the Dart SDK.
+      # You can specify other versions if desired, see documentation here:
+      # https://github.com/dart-lang/setup-dart/blob/main/README.md
+      # - uses: dart-lang/setup-dart@v1
+      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
 
       - name: Install dependencies
-        run: cd frontend && flutter pub get
+        run: dart pub get
+        working-directory: frontend
 
-      # Verify formatting
+      # Uncomment this step to verify the use of 'dart format' on each commit.
       - name: Verify formatting
-        run: cd frontend && dart format --output=none --set-exit-if-changed .
+        run: dart format --output=none --set-exit-if-changed .
+        working-directory: frontend
 
-      # Analyze project source
+      # Consider passing '--fatal-infos' for slightly stricter analysis.
       - name: Analyze project source
-        run: cd frontend && dart analyze --fatal-infos
+        run: dart analyze --fatal-infos
+        working-directory: frontend
