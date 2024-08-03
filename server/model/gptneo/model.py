@@ -6,7 +6,7 @@ from .gptneo_history import GptNeoHistory
 from .gptneo_config import GptNeoConfig
 from .parser import extract_assistant_reply
 
-generator = pipeline('text-generation', model='EleutherAI/gpt-neo-1.3B', device='cuda:0')
+generator = pipeline('text-generation', model='google/gemma-2-2b', device='cuda:0')
 
 def generate_response(query: str, history: Optional[List[GptNeoHistory]] = None) -> str:
     global generator
