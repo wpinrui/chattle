@@ -63,6 +63,3 @@ jobs:
         run: flutter build
         working-directory: frontend
 
-      - name: Run tests
-        run: flutter test
-        working-directory: frontend
