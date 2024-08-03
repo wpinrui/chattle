@@ -6,7 +6,7 @@ from .gptneo_history import GptNeoHistory
 
 
 def extract_assistant_reply(
-    response: dict, history: Optional[List[GptNeoHistory]] = None
+        response: dict, history: Optional[List[GptNeoHistory]] = None
 ) -> str:
     text = response[0]["generated_text"]
 
@@ -24,7 +24,7 @@ def extract_assistant_reply(
         return ""  # No assistant identifier found
 
     # Extract text starting after the assistant identifier and colon
-    text = text[assistant_start + len(GptNeoConfig.ASSISTANT_IDENTIFIER) + 1 :].strip()
+    text = text[assistant_start + len(GptNeoConfig.ASSISTANT_IDENTIFIER) + 1:].strip()
 
     # Find the start of the next user reply, or the next newline
     user_start = text.find(GptNeoConfig.USER_IDENTIFIER)
@@ -46,7 +46,7 @@ def extract_assistant_reply(
     return response_text.strip()
 
 
-def remove_unexpected_punc(string: str) -> str:
-    allowed_punct = r"[\.,!?]"
-    cleaned_string = re.sub(r"[^\w\s" + allowed_punct + "]", "", string)
+def remove_unexpected_punctuation(string: str) -> str:
+    allowed_punctuation = r"[\.,!?]"
+    cleaned_string = re.sub(r"[^\w\s" + allowed_punctuation + "]", "", string)
     return cleaned_string

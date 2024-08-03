@@ -1,5 +1,5 @@
 from history.history_item_interface import HistoryItemInterface
-from .dialogpt_config import DialoGptConfig
+from dialogpt_config import DialoGptConfig
 
 
 class DialoGptHistory(HistoryItemInterface):
