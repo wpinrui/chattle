@@ -5,12 +5,12 @@
 Chattle is a chat application whose design is inspired by Telegram. It allows users to chat with an LLM that is hosted by running `server\app.py`.
 
 ## Feature roadmap:
-- [ ] Chat screen
-- [ ] Server endpoint for receiving message
-- [ ] Server history management
-- [ ] Token system for authenticating app request
-- [ ] Sending chat message
-- [ ] Receiving LLM reply
+- [x] Chat screen
+- [x] Server endpoint for receiving message
+- [x] Server history management
+- [x] Token system for authenticating app request
+- [x] Sending chat message
+- [x] Receiving LLM reply
 - [ ] Conversations list
 - [ ] Authentication service
 - [ ] Front-end user-differentiated history
