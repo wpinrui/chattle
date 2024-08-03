@@ -20,6 +20,13 @@ jobs:
         run: flutter pub get
         working-directory: frontend
 
+      - name: Create mock secret file
+        run: |
+          echo "class Secret {" > frontend/lib/api/secret.dart
+          echo "  static const String hostUrl = '';" >> frontend/lib/api/secret.dart
+          echo "  static const String authToken = '';" >> frontend/lib/api/secret.dart
+          echo "}" >> frontend/lib/api/secret.dart
+          
       - name: Analyze project source
         run: dart analyze
         working-directory: frontend
