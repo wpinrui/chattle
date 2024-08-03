@@ -22,11 +22,11 @@ jobs:
 
       - name: Create mock secret file
         run: |
-          echo "class Secret {" > frontend/lib/api/secret.dart
-          echo "  static const String hostUrl = '';" >> frontend/lib/api/secret.dart
-          echo "  static const String authToken = '';" >> frontend/lib/api/secret.dart
-          echo "}" >> frontend/lib/api/secret.dart
-          
+          echo "class Secret {" > frontend/lib/secret.dart
+          echo "  static const String hostUrl = '';" >> frontend/lib/secret.dart
+          echo "  static const String authToken = '';" >> frontend/lib/secret.dart
+          echo "}" >> frontend/lib/secret.dart
+
       - name: Analyze project source
         run: dart analyze
         working-directory: frontend
