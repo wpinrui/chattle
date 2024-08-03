@@ -3,6 +3,9 @@ name: Flutter
 on:
   push:
 
+env:
+  flutter_version: "3.22.3"  # Update this to the desired version if different
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,11 +13,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v1
+        with:
+          path: /opt/hostedtoolcache/flutter
+          key: ${{ runner.OS }}-flutter-install-cache-${{ env.flutter_version }}
+          restore-keys: |
+            ${{ runner.OS }}-flutter-install-cache-
+
       - name: Setup Flutter SDK
         uses: flutter-actions/setup-flutter@v3
         with:
           channel: stable
-          version: 3.22.3
+          version: ${{ env.flutter_version }}
 
       - name: Install dependencies
         run: flutter pub get
