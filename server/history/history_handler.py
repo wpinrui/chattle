@@ -6,13 +6,14 @@ from history.history_item_interface import HistoryItemInterface
 
 class HistoryHandler:
     def __init__(self, max_length: int = 10) -> None:
-        self.user_conversation_history: DefaultDict[str, List[HistoryItemInterface]] = defaultdict(list)
+        self.user_conversation_history: DefaultDict[str, List[HistoryItemInterface]] = \
+            defaultdict(list)
         self.max_length = max_length
 
-    def add_to_history(self, user_id: str, user_input: str, response: str) -> None:
+    def add_to_history(self, user_id: str, user_input: HistoryItemInterface, response: HistoryItemInterface) -> None:
         history = self.user_conversation_history[user_id]
-        history.append(f"USER: {user_input}\n")
-        history.append(f"JANET: {response}\n")
+        history.append(user_input)
+        history.append(response)
         self.user_conversation_history[user_id] = history[-self.max_length:]
 
     def get_history(self, user_id: str) -> List[HistoryItemInterface]:

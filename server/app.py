@@ -1,6 +1,4 @@
 from logging import getLogger
-from typing import Tuple
-
 from flask import Flask, request, jsonify, Response
 from auth.auth import check_auth
 from history.history_handler import HistoryHandler
@@ -15,25 +13,25 @@ history_handler = HistoryHandler(max_length=10)
 @app.route("/generate", methods=["POST"])
 def generate_text() -> tuple[Response, int] | Response:
     user_id = request.headers.get("User-ID")
-    logger.debug(f"Received request from user {user_id}")
+    logger.debug("Received request from user %s", user_id)
 
     auth_header = request.headers.get("Authorization")
     if auth_header and auth_header.startswith("Bearer "):
         auth_token = auth_header[len("Bearer "):]
     else:
         auth_token = None
-    logger.debug(f"Received auth token from user {user_id}: {auth_token}")
+    logger.debug("Received auth token from user %s: %s", user_id, auth_token)
 
     if not user_id or not auth_token or not check_auth(auth_token):
         return jsonify({"error": "Unauthorized"}), 403
 
     data = request.json
     prompt = data.get("prompt", "")
-    logger.debug(f"Received prompt from user {user_id}: {prompt}")
+    logger.debug("Received prompt from user %s: %s", user_id, prompt)
 
     history = history_handler.get_history(user_id)
     response = generate_response(prompt, history)
-    logger.debug(f"Generated response for user {user_id}: {response}")
+    logger.debug("Generated response for user %s: %s", user_id, response)
     cleaned_response: str = remove_unexpected_punctuation(response)
     history_handler.add_to_history(user_id, prompt, cleaned_response)
 
@@ -50,7 +48,7 @@ def clear_history() -> tuple[Response, int] | Response:
         return jsonify({"error": "Unauthorized"}), 403
 
     history_handler.clear_history(user_id)
-    logger.debug(f"Cleared conversation history for user {user_id}")
+    logger.debug("Cleared conversation history for user %s", user_id)
 
     return jsonify({"message": "Conversation history cleared."})
 
