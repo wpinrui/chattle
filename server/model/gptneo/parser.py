@@ -1,8 +1,8 @@
 import re
 from typing import List, Optional
 
-from .gptneo_config import GptNeoConfig
-from .gptneo_history import GptNeoHistory
+from model.gptneo.gptneo_config import GptNeoConfig
+from model.gptneo.gptneo_history import GptNeoHistory
 
 
 def extract_assistant_reply(
